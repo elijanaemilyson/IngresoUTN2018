@@ -9,14 +9,39 @@ function Mostrar()
 
 	// declarar variables
 	
-	var respuesta='s';
+	var respuesta=true;
 
 	do
-	{	
+	{	numero = parseInt( prompt("Ingrese numeros "));
+
+		if (contador == 0)
+		{
+			max = numero;	
+			min = numero;
+			contador++;
+
+			//acumulador+=numero
+			//contador++
+			//contador+=1
+		}
+		if ( numero > max )
+		{	
+			 max=numero;	
+
+		}
+		if ( numero < min)	
+		{	
+			min = numero;
+		}
+		
+		respuesta = confirm("¿Desea seguir?");
+
+	}while (respuesta == true);
 
 	
-	}
 
+	document.getElementById("maximo").value=max;
+	document.getElementById("minimo").value=min;
 
 
 
