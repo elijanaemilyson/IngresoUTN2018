@@ -9,6 +9,76 @@ E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de 
 
  */
 function CalcularPrecio () 
-{
- 	
+{ 
+    
+    var cantidadLamparasCompradas;
+    var marca;
+    var informetotal;
+    var porcentaje;
+    var informeDescuento;
+    var subtotalCompra;
+    const valorUnitarioLampara = 35;
+    var ingresosBrutos;
+
+    cantidadLamparasCompradas = document.getElementById("Cantidad").value;
+    marca = document.getElementById("Marca").value;
+    subtotalCompra  = valorUnitarioLampara * cantidadLamparasCompradas;
+
+        switch(cantidadLamparasCompradas){
+            case "1":
+            case "2":
+                    porcentaje = subtotalCompra * 0 / 100;
+            
+            break;
+
+            case "5":
+                if ( marca == "ArgentinaLuz" ){  
+                    porcentaje = subtotalCompra * 40 / 100;    
+                }
+
+                else{    
+                    porcentaje = subtotalCompra * 30 / 100;     
+                }
+            break;
+
+            case "4":
+                if ( marca == "ArgentinaLuz" || marca == "FelipeLamparas"){ 
+                    porcentaje = subtotalCompra * 25 / 100;     
+                }
+                else{
+                    porcentaje = subtotalCompra * 20 / 100;     
+                }
+                break;
+
+            case "3":
+                if ( marca == "ArgentinaLuz" ){
+                porcentaje = subtotalCompra * 15 / 100;                        
+                }
+                else if ( marca == "FelipeLamparas"){
+                porcentaje = subtotalCompra * 10 / 100;                        
+                }
+                else{
+                porcentaje = subtotalCompra * 5 / 100;                        
+                }
+                break;
+
+            default:
+                porcentaje = subtotalCompra * 50 / 100;
+                //descuento = 50/100; 
+            break;
+                }
+          
+        //porcentaje = subtotalCompra * descuento;
+        informeDescuento = subtotalCompra - porcentaje;
+
+        if ( informeDescuento > 120 ){
+            ingresosBrutos = informeDescuento * 10 / 100;
+            informeDescuento = ingresosBrutos + informeDescuento;
+
+            alert("IBB usted pago " + ingresosBrutos);
+        }
+
+        document.getElementById("precioDescuento").value = informeDescuento;
+                
+                
 }
